@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Hackathon Project</title>
+    <link rel="icon" href="favicon.png" sizes="16x16" type="image/png" />
+
+    <!-- javascript toast -->
+    <link rel="stylesheet" type="text/css" href="css/toastify.min.css" />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="position-sticky top-0 z-1 bg-dark" id="header">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a href="index.html"><img src="./favicon.png" alt="logo" /></a>
+          <a class="navbar-brand text-warning fw-bold" href="#"
+            >Mini Hackathon Project</a
+          >
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a
+                  class="nav-link active text-warning fw-bold"
+                  aria-current="page"
+                  href="#"
+                  >Chapter 1-42</a
+                >
+              </li>
+            </ul>
+            <div><span class="" id="result"></span></div>
+            <a
+              class="nav-link active fw-bold"
+              id="login"
+              aria-current="page"
+              href="#"
+              onclick="toggleLoginPage()"
+              >Log In</a
+            >
+            <a
+              class="nav-link active fw-bold"
+              id="logout"
+              aria-current="page"
+              href="index.html"
+              >Log Out</a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div
+        class="container-sm d-flex justify-content-center align-items-center flex-column"
+      >
+        <div id="TODO-FORM" class="hide-todo" >
+          <div
+            class="todo-page d-flex justify-content-center align-items-center flex-column mt-3"
+          >
+            <div class="form">
+              <h2 class="mb-4">
+                TO-DO LIST
+                <img
+                  src="todo (2).png"
+                  alt="todo Icon"
+                  style="width: 45px; height: 45px; margin-bottom: 15px"
+                />
+              </h2>
+              <div class="inputbox mb-4">
+                <input class="pt-2" type="text" required id="task-title" />
+                <label for="task-title">Task Title</label>
+                <i class="fa fa-envelope ms-4" style="font-size: 20px"></i>
+              </div>
+              <div class="inputbox mt-5">
+                <input
+                  class="pt-2"
+                  type="text"
+                  required
+                  id="task-description"
+                />
+                <label for="register-password">Description</label>
+                <i class="fa fa-lock" style="font-size: 24px"></i>
+              </div>
+              <div class="inputbox mb-4">
+                <input class="pt-2" type="date" required id="task-date" />
+                <label for="task-title">Task Date</label>
+                <i class="fa fa-envelope ms-4" style="font-size: 20px"></i>
+              </div>
+              <button
+                id="addtask"
+                class="btn btn-outline-light"
+                onclick="addTask()"
+              >
+                Add Task
+              </button>
+              <button
+                id="viewtasks"
+                class="btn btn-outline-light"
+                onclick="viewTasks()"
+              >
+                View Tasks
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id="TODO-OUTPUT" class="hide-todoOutput">
+          <div
+            class="output-page d-flex justify-content-center align-items-center flex-column mt-3"
+          >
+            <div class="form position-sticky top-0 z-1">
+              <h2 class=" " style="margin-top: -25px">
+                Manage Tasks
+                <img
+                  src="todo (2).png"
+                  alt="todo Icon"
+                  style="width: 45px; height: 45px; margin-bottom: 15px"
+                /><a
+                class="nav-link active fw-bold"
+                id="addmore"
+                aria-current="page"
+                href="#"
+                onclick="toggleTodoForm()"
+                >Add More</a
+              >
+              </h2>
+              <table>
+                <tr>
+                  <th style="padding-left: 22px">#</th>
+                  <th>Task</th>
+                  <th>Description</th>
+                  <th>Date</th>
+                  <th>ID</th>
+                  <th>Status</th>
+                  <th>Created AT</th>
+                  <th>Action</th>
+                </tr>
+              </table>
+              <div id="output-inner" class="inner">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="forgotPassword" class="hide-forgot">
+          <div
+            class="forgot-page d-flex justify-content-center align-items-center flex-column"
+          >
+            <div class="form">
+              <h2 class="mb-4">
+                Forgot Password
+                <img
+                  src="password.png"
+                  alt="password Icon"
+                  style="width: 50px; height: 48px; margin-bottom: 5px"
+                />
+              </h2>
+              <div class="inputbox ms-3">
+                <input class="pt-2" type="email" required id="forgot-email" />
+                <label for="forgot-email">Email</label>
+                <i class="fa fa-envelope ms-4" style="font-size: 20px"></i>
+              </div>
+              <div class="inputbox ms-3">
+                <input
+                  class="pt-2"
+                  type="password"
+                  required
+                  id="forgot-password"
+                />
+                <label for="forgot-password">New Password</label>
+                <i class="fa fa-lock" style="font-size: 24px"></i>
+              </div>
+              <div class="inputbox ms-3">
+                <input
+                  class="pt-2"
+                  type="password"
+                  required
+                  id="confirm-password"
+                />
+                <label for="confirm-password">Confirm Password</label>
+                <i class="fa fa-lock" style="font-size: 24px"></i>
+              </div>
+
+              <button
+                id="forgot-btn"
+                class="btn mt-4 btn-outline-light mt-4 ms-3"
+                onclick="handleResetPassword()"
+              >
+                Reset Password
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id="LOGIN-FORM" class="hide-login">
+          <div
+            class="login-page d-flex justify-content-center align-items-center flex-column"
+          >
+            <div class="form">
+              <h2 class="mb-4">
+                Login
+                <img
+                  src="login.png"
+                  alt="Login Icon"
+                  style="width: 50px; height: 48px; margin-bottom: 5px"
+                />
+              </h2>
+              <div class="inputbox">
+                <input class="pt-2" type="email" required id="login-email" />
+                <label for="login-email">Email</label>
+                <i class="fa fa-envelope ms-4" style="font-size: 20px"></i>
+              </div>
+              <div class="inputbox">
+                <input
+                  class="pt-2"
+                  type="password"
+                  required
+                  id="login-password"
+                />
+                <label for="login-password">Password</label>
+                <i class="fa fa-lock" style="font-size: 24px"></i>
+              </div>
+              <div class="mt-2">
+                <a
+                  href="javascript:void(0)"
+                  style="
+                    display: flex;
+                    justify-content: right;
+                    margin-right: px;
+                  "
+                  onclick="toggleForgotPassword() "
+                  >Forgot Password?</a
+                >
+              </div>
+              <button
+                id="login-btn"
+                class="btn mt-4 btn-outline-light mt-4"
+                onclick="handleUserLogin()"
+              >
+                Login
+              </button>
+            </div>
+            <div class="mt-4">
+              <p>
+                Don't Have an Account ?
+                <a href="javascript:void(0)" onclick="toggleRegisterPage() "
+                  >Register</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div id="REGISTER-FORM" class="hide-signup">
+          <div
+            class="register-page d-flex justify-content-center align-items-center flex-column"
+          >
+            <div class="form">
+              <h2 class="mb-4">
+                Register
+                <img
+                  src="register.png"
+                  alt="register Icon"
+                  style="width: 45px; height: 45px; margin-bottom: 15px"
+                />
+              </h2>
+              <div class="inputbox mb-4">
+                <input class="pt-2" type="email" required id="register-email" />
+                <label for="register-email">Email</label>
+                <i class="fa fa-envelope ms-4" style="font-size: 20px"></i>
+              </div>
+              <div class="inputbox mt-5">
+                <input
+                  class="pt-2"
+                  type="password"
+                  required
+                  id="register-password"
+                />
+                <label for="register-password">Password</label>
+                <i class="fa fa-lock" style="font-size: 24px"></i>
+              </div>
+              <p class="" id="minidigit"></p>
+              <button
+                id="register-btn"
+                class="mt-5 Register btn btn-outline-light mt-4"
+                onclick="handleUserRegister()"
+              >
+                Register
+              </button>
+            </div>
+            <div class="mt-4">
+              <p>
+                Already Have an Account?
+                <a href="javascript:void(0)" onclick="toggleLoginPage()">
+                  Login
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="mb-0">
+      <p class="mb-0">
+        Powered by
+        <a class="text-warning" href="#"> <b>M.A.K Developer.</b></a>
+      </p>
+      <p class="mb-0">&copy;2000-2024 | All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
